@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paulo Henrique — Bulma</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.2/css/bulma.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <div id="snake-header">
+    <canvas id="snake-canvas"></canvas>
+    <button class="button is-small" id="theme-btn">
+      <i class="bi bi-moon-fill" id="themeIcon"></i>&nbsp;tema
+    </button>
+    <a href="../index.html" class="button is-small" id="switch-btn">
+      <i class="bi bi-arrow-left-right"></i>&nbsp;versão Bootstrap
+    </a>
+  </div>
+
+  <div class="ph-container">
+
+    <div class="avatar-placeholder mb-2">
+      <img src="../docs/image.png" alt="" class="avatar-image">
+    </div>
+    <div class="has-text-centered mb-5">
+      <p class="title is-5 mb-0">Paulo Henrique Ribeiro Alves</p>
+      <p class="subtitle is-6 mb-1" style="color: var(--text-muted)">Desenvolvedor de Software</p>
+      <p class="is-size-7" style="color: var(--text-muted)">
+        Estudante de Ciência da Computação na UFLA, focado em backend, automações e dados.
+      </p>
+      <p class="is-size-7 mt-1" style="color: var(--text-muted)">
+        Mais confortável no terminal do que no figma.
+      </p>
+      <div class="is-flex is-justify-content-center is-flex-wrap-wrap mt-2" style="gap: 0.5rem;">
+        <a href="https://github.com/paulohenrique64" target="_blank" class="ph-link is-size-7">
+          <i class="bi bi-github"></i> github
+        </a>
+        <a href="https://linkedin.com/in/paulo-henrique-ribeiro-alves-218708281" target="_blank" class="ph-link is-size-7">
+          <i class="bi bi-linkedin"></i> linkedin
+        </a>
+      </div>
+    </div>
+
+    <div id="fighters-wrap">
+      <canvas id="fighters-canvas"></canvas>
+    </div>
+
+    <hr class="ph-hr">
+
+    <p class="is-size-7 ph-section-label mb-2">projetos</p>
+    <div class="columns is-mobile is-multiline mb-5" style="gap: 0;">
+      <div class="column is-one-third">
+        <a href="https://github.com/paulohenrique64/slime-trail-game" target="_blank" class="ph-project-card">
+          <div class="ph-proj-title"><i class="bi bi-github"></i> slime trail game</div>
+          <div class="ph-proj-desc">Simple slime game</div>
+          <div class="ph-proj-lang">● HTML, CSS and JavaScript</div>
+        </a>
+      </div>
+      <div class="column is-one-third">
+        <a href="https://github.com/paulohenrique64/jogo-da-velha-online" target="_blank" class="ph-project-card">
+          <div class="ph-proj-title"><i class="bi bi-github"></i> jogo da velha online</div>
+          <div class="ph-proj-desc">Jogo da velha online construído utilizando socket.io</div>
+          <div class="ph-proj-lang">● HTML, CSS and Node</div>
+        </a>
+      </div>
+      <div class="column is-one-third">
+        <a href="https://github.com/isaccunha/coffee-chain" target="_blank" class="ph-project-card">
+          <div class="ph-proj-title"><i class="bi bi-github"></i> coffee-chain</div>
+          <div class="ph-proj-desc">Solução de alunos da UFLA para a rastreabilidade embutida em plantio de café no Brasil</div>
+          <div class="ph-proj-lang">● Python, Typescript and React</div>
+        </a>
+      </div>
+    </div>
+
+    <hr class="ph-hr">
+
+    <p class="is-size-7 ph-section-label mb-3">experiência</p>
+
+    <div class="ph-card mb-3">
+      <div class="ph-card-header is-flex is-justify-content-space-between is-flex-wrap-wrap">
+        <span>MOST Specialist Technologies</span>
+        <span class="ph-badge">Set 2025 – presente</span>
+      </div>
+      <div class="ph-card-body">
+        <p class="is-size-7 mb-1" style="color: var(--text-muted)">Estagiário Full Stack Developer — Remoto, BH</p>
+        <ul class="is-size-7 ph-list">
+          <li>Desenvolvimento de automações e integrações para otimizar processos, comunicação e envio de informações entre sistemas.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ph-card mb-3">
+      <div class="ph-card-header is-flex is-justify-content-space-between is-flex-wrap-wrap">
+        <span>Inovia</span>
+        <span class="ph-badge">Jul 2025 – Set 2025</span>
+      </div>
+      <div class="ph-card-body">
+        <p class="is-size-7 mb-1" style="color: var(--text-muted)">Estagiário em Ciência de Dados (Bolsista CNPq) — Remoto, Campinas</p>
+        <ul class="is-size-7 ph-list">
+          <li>Desenvolvimento de soluções em visão computacional para análise de imagens, incluindo estimativa de medidas corporais, anotação de dados e extração automatizada de informações.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ph-card mb-3">
+      <div class="ph-card-header is-flex is-justify-content-space-between is-flex-wrap-wrap">
+        <span>Compass UOL</span>
+        <span class="ph-badge">Fev 2025 – Jul 2025</span>
+      </div>
+      <div class="ph-card-body">
+        <p class="is-size-7 mb-1" style="color: var(--text-muted)">Estagiário em Engenharia de Dados — Remoto</p>
+        <ul class="is-size-7 ph-list">
+          <li>Atuação em engenharia e análise de dados, envolvendo tratamento e visualização de dados, construção de pipelines e organização de ambientes escaláveis para armazenamento e processamento.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ph-card mb-5">
+      <div class="ph-card-header is-flex is-justify-content-space-between is-flex-wrap-wrap">
+        <span>Emakers Jr.</span>
+        <span class="ph-badge">Dez 2024 – Nov 2025</span>
+      </div>
+      <div class="ph-card-body">
+        <p class="is-size-7 mb-1" style="color: var(--text-muted)">Desenvolvedor Backend (Empresa Júnior) — Lavras, MG</p>
+        <ul class="is-size-7 ph-list">
+          <li>Desenvolvimento de sistemas backend com APIs para gestão de processos e dados, incluindo controle de acesso e autenticação segura.</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="ph-hr">
+
+    <p class="is-size-7 ph-section-label mb-2">habilidades</p>
+    <p class="is-size-7 mb-1" style="color: var(--text-muted)">linguagens</p>
+    <div class="tags mb-3">
+      <span class="tag ph-tag">Java</span>
+      <span class="tag ph-tag">Python</span>
+      <span class="tag ph-tag">JavaScript</span>
+      <span class="tag ph-tag">HTML/CSS</span>
+      <span class="tag ph-tag">SQL</span>
+      <span class="tag ph-tag">APIs REST</span>
+    </div>
+    <p class="is-size-7 mb-1" style="color: var(--text-muted)">tecnologias</p>
+    <div class="tags mb-5">
+      <span class="tag ph-tag">Linux</span>
+      <span class="tag ph-tag">Git</span>
+      <span class="tag ph-tag">AWS</span>
+      <span class="tag ph-tag">Apache Spark</span>
+      <span class="tag ph-tag">PostgreSQL</span>
+      <span class="tag ph-tag">MongoDB</span>
+      <span class="tag ph-tag">Firestore</span>
+      <span class="tag ph-tag">Docker</span>
+      <span class="tag ph-tag">Pandas</span>
+      <span class="tag ph-tag">Matplotlib</span>
+      <span class="tag ph-tag">Chatwoot</span>
+    </div>
+
+    <hr class="ph-hr">
+
+    <div class="columns mb-5">
+      <div class="column">
+        <p class="is-size-7 ph-section-label mb-2">educação</p>
+        <p class="is-size-7"><strong>Universidade Federal de Lavras</strong></p>
+        <p class="is-size-7" style="color: var(--text-muted)">Ciência da Computação</p>
+        <p class="is-size-7" style="color: var(--text-muted)">Jan 2023 – Dez 2026</p>
+      </div>
+      <div class="column">
+        <p class="is-size-7 ph-section-label mb-2">certificações</p>
+        <p class="is-size-7"><strong>AWS Certified Cloud Practitioner</strong></p>
+        <p class="is-size-7" style="color: var(--text-muted)">Amazon Web Services · Jul 2025</p>
+      </div>
+    </div>
+
+    <p class="is-size-7 has-text-centered mb-4" style="color: var(--text-muted)">abril de 2026</p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

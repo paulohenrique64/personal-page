@@ -1,0 +1,272 @@
+/* ── Reset de bordas arredondadas ── */
+*, *::before, *::after {
+  border-radius: 0 !important;
+}
+
+/* ── Tokens de cor (dark) ── */
+[data-theme="dark"] {
+  --dull-blue: #4a6a7a;
+  --dull-blue-dark: #3a5a6a;
+  --dull-blue-light: #2a3f50;
+  --dull-blue-bg: #1a2530;
+  --badge-bg: #3a5568;
+  --badge-text: #aac4d4;
+  --header-bg: #2a4055;
+  --header-text: #8ab0c8;
+  --text-muted: #7a9bb5;
+  --snake-bg: #0d1b24;
+  --link-color: #2c3e50;
+  --card-border: #2a3f50;
+  --body-bg: #1a2530;
+}
+
+/* ── Tokens de cor (light) ── */
+[data-theme="light"] {
+  --dull-blue: #7a9bb5;
+  --dull-blue-dark: #5a7a90;
+  --dull-blue-light: #c8d8e4;
+  --dull-blue-bg: #eaf0f5;
+  --badge-bg: #a0b8c8;
+  --badge-text: #2c3e50;
+  --header-bg: #8aaabb;
+  --header-text: #1a2a35;
+  --text-muted: #6c757d;
+  --snake-bg: #d4e6f0;
+  --link-color: #2c3e50;
+  --card-border: #c8d8e4;
+  --body-bg: #eaf0f5;
+}
+
+/* ── Base ── */
+html, body {
+  background-color: var(--body-bg) !important;
+  color: var(--header-text);
+  min-height: 100%;
+}
+
+/* ── Container principal ── */
+.ph-container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+/* ── Snake header ── */
+#snake-header {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: var(--snake-bg);
+}
+
+#snake-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#snake-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: linear-gradient(to bottom, transparent, var(--body-bg));
+  pointer-events: none;
+}
+
+/* ── Botões no header ── */
+#theme-btn {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  z-index: 10;
+  border: 1px solid var(--dull-blue-dark) !important;
+  color: var(--dull-blue-dark) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+#switch-btn {
+  position: absolute;
+  top: 10px;
+  right: 90px;
+  z-index: 10;
+  border: 1px solid var(--dull-blue-dark) !important;
+  color: var(--dull-blue-dark) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  text-decoration: none;
+  font-size: 0.75rem;
+}
+
+#theme-btn:hover,
+#switch-btn:hover {
+  background: var(--dull-blue-light) !important;
+}
+
+/* ── Avatar ── */
+.avatar-placeholder {
+  width: 20%;
+  height: 20%;
+  background-color: var(--dull-blue-light);
+  border: 2px solid var(--dull-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  border-radius: 100% !important;
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 100% !important;
+}
+
+.title {
+  color: var(--header-text) !important;
+}
+
+.subtitle {
+  color: var(--text-muted) !important;
+}
+
+.ph-link {
+  color: var(--badge-text);
+  text-decoration: none;
+}
+
+.ph-link:hover {
+  color: var(--dull-blue);
+}
+
+/* ── Divisor ── */
+.ph-hr {
+  border: none;
+  border-top: 1px solid var(--card-border);
+  margin: 1.25rem 0;
+}
+
+/* ── Label de seção ── */
+.ph-section-label {
+  color: var(--text-muted);
+}
+
+/* ── Projetos ── */
+.ph-project-card {
+  display: block;
+  border: 1px solid var(--card-border);
+  background-color: transparent;
+  padding: 0.75rem;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.ph-project-card:hover {
+  border-color: var(--dull-blue-dark);
+  color: inherit;
+}
+
+.ph-proj-title {
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: var(--header-text);
+}
+
+.ph-proj-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.ph-proj-lang {
+  font-size: 0.72rem;
+  color: var(--badge-text);
+  margin-top: 0.4rem;
+}
+
+/* ── Cards de experiência ── */
+.ph-card {
+  border: 1px solid var(--card-border);
+  background: transparent;
+}
+
+.ph-card-header {
+  background-color: transparent;
+  color: var(--header-text);
+  padding: 0.4rem 0.6rem;
+  font-weight: bold;
+  font-size: 0.875rem;
+}
+
+.ph-card-body {
+  padding: 0.5rem 0.6rem;
+}
+
+/* ── Badge de data ── */
+.ph-badge {
+  display: inline-block;
+  background-color: var(--badge-bg);
+  color: var(--badge-text);
+  font-weight: normal;
+  font-size: 0.72rem;
+  padding: 0.15rem 0.45rem;
+}
+
+/* ── Lista dentro dos cards ── */
+.ph-list {
+  list-style: disc;
+  padding-left: 1.2rem;
+  margin: 0;
+}
+
+.ph-list li {
+  color: var(--header-text);
+  margin-bottom: 0;
+}
+
+/* ── Tags de habilidades ── */
+.ph-tag {
+  background-color: var(--badge-bg) !important;
+  color: var(--badge-text) !important;
+  font-weight: normal !important;
+}
+
+/* ── Fighters canvas ── */
+#fighters-wrap {
+  position: relative;
+  width: 100%;
+  height: 110px;
+  overflow: hidden;
+  margin-bottom: -1px;
+}
+
+#fighters-canvas {
+  display: block;
+  width: 100%;
+  height: 110px;
+}
+
+/* ── Emoji bursts ── */
+.fight-emoji {
+  position: fixed;
+  pointer-events: none;
+  user-select: none;
+  z-index: 99999;
+  line-height: 1;
+}
+
+/* ── Columns ── */
+.columns {
+  margin: 0 !important;
+}
+
+.column {
+  padding: 0.4rem !important;
+}
