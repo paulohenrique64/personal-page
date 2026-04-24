@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paulo Henrique</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"/>
+  <style>
+    *, *::before, *::after { border-radius: 0 !important; }
+
+    :root {
+      --dull-blue: #7a9bb5;
+      --dull-blue-dark: #5a7a90;
+      --dull-blue-light: #c8d8e4;
+      --dull-blue-bg: #eaf0f5;
+      --badge-bg: #a0b8c8;
+      --badge-text: #2c3e50;
+      --header-bg: #8aaabb;
+      --header-text: #1a2a35;
+    }
+
+    [data-bs-theme="dark"] {
+      --dull-blue: #4a6a7a;
+      --dull-blue-dark: #3a5a6a;
+      --dull-blue-light: #2a3f50;
+      --dull-blue-bg: #1a2530;
+      --badge-bg: #3a5568;
+      --badge-text: #aac4d4;
+      --header-bg: #2a4055;
+      --header-text: #8ab0c8;
+    }
+
+    body { background-color: var(--dull-blue-bg); }
+
+    #snake-header {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      background: var(--snake-bg);
+    }
+
+    #snake-canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    #snake-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 60%;
+      background: linear-gradient(to bottom, transparent, var(--dull-blue-bg));
+      pointer-events: none;
+    }
+
+    :root { --snake-bg: #d4e6f0; }
+    [data-bs-theme="dark"] { --snake-bg: #0d1b24; }
+
+    #theme-btn {
+      position: absolute;
+      top: 10px; right: 12px;
+      z-index: 10;
+      border: 1px solid var(--dull-blue-dark);
+      color: var(--dull-blue-dark);
+      background: transparent;
+    }
+
+    .card-header-dull {
+      background-color: var(--header-bg);
+      color: var(--header-text);
+      padding: 0.4rem 0.6rem;
+      font-weight: bold;
+      border-bottom: 1px solid var(--dull-blue-dark);
+    }
+
+    .badge-dull {
+      background-color: var(--badge-bg);
+      color: var(--badge-text);
+      font-weight: normal;
+    }
+
+    .avatar-placeholder {
+      width: 96px; height: 96px;
+      background-color: var(--dull-blue-light);
+      border: 2px solid var(--dull-blue);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto;
+    }
+
+    a { color: var(--dull-blue-dark); }
+    a:hover { color: var(--dull-blue); }
+    .card { border-color: var(--dull-blue-light) !important; }
+
+    .project-card {
+      border: 1px solid var(--dull-blue-light);
+      background-color: var(--dull-blue-bg);
+      padding: 0.75rem;
+      height: 100%;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .project-card:hover { border-color: var(--dull-blue-dark); color: inherit; }
+    .project-card .proj-title { font-weight: bold; font-size: 0.9rem; color: var(--dull-blue-dark); }
+    .project-card .proj-desc  { font-size: 0.78rem; color: #6c757d; margin-top: 0.25rem; }
+    .project-card .proj-lang  { font-size: 0.72rem; color: var(--badge-text); margin-top: 0.4rem; }
+
+    /* ── fighters canvas wrapper ── */
+    #fighters-wrap {
+      position: relative;
+      width: 100%;
+      height: 110px;
+      overflow: hidden;
+      margin-bottom: -1px;
+    }
+    #fighters-canvas {
+      display: block;
+      width: 100%;
+      height: 110px;
+    }
+    /* emoji bursts from fighters must be fixed-positioned — handled in JS */
+    .fight-emoji {
+      position: fixed;
+      pointer-events: none;
+      user-select: none;
+      z-index: 99999;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Snake header ── -->
+  <div id="snake-header">
+    <canvas id="snake-canvas"></canvas>
+    <button class="btn btn-sm" id="theme-btn">
+      <i class="bi bi-moon-fill" id="themeIcon"></i> tema
+    </button>
+  </div>
+
+  <div class="container py-4" style="max-width: 680px;">
+
+    <!-- Avatar + bio -->
+    <div class="text-center mb-4">
+      <div class="avatar-placeholder mb-2">
+        <!-- <i class="bi bi-person" style="font-size: 3rem; color: var(--dull-blue);"></i> -->
+         <img src="docs/image.png" alt="" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <h5 class="mb-0">Paulo Henrique Ribeiro Alves</h5>
+      <div class="text-muted small">Desenvolvedor de Software</div>
+      <div class="text-muted small mt-1">
+        Estudante de Ciência da Computação na UFLA, focado em backend, automações e dados.
+      </div>
+      <div class="d-flex justify-content-center flex-wrap gap-2 mt-2 small">
+        <a href="https://github.com/paulohenrique64" target="_blank"><i class="bi bi-github"></i> github</a>
+        <a href="https://linkedin.com/in/paulo-henrique-ribeiro-alves-218708281" target="_blank"><i class="bi bi-linkedin"></i> linkedin</a>
+      </div>
+    </div>
+
+    <!-- ── Fighters canvas — sits right above the projects hr ── -->
+    <div id="fighters-wrap">
+      <canvas id="fighters-canvas"></canvas>
+    </div>
+
+    <hr style="border-color: var(--dull-blue-light); margin-top: 0;">
+
+    <!-- Projetos -->
+    <h6 class="text-muted mb-2">projetos</h6>
+    <div class="row g-2 mb-4">
+      <div class="col-4">
+        <a href="https://github.com/paulohenrique64/slime-trail-game" target="_blank" class="project-card">
+          <div class="proj-title"><i class="bi bi-github"></i> Slime Trail Game</div>
+          <div class="proj-desc">Simple slime game</div>
+          <div class="proj-lang">● HTML, CSS and JavaScript</div>
+        </a>
+      </div>
+      <div class="col-4">
+        <a href="https://github.com/paulohenrique64/jogo-da-velha-online" target="_blank" class="project-card">
+          <div class="proj-title"><i class="bi bi-github"></i> Jogo da velha online</div>
+          <div class="proj-desc">Jogo da velha online construído utilizando socket.io</div>
+          <div class="proj-lang">● HTML, CSS and Node</div>
+        </a>
+      </div>
+      <div class="col-4">
+        <a href="https://github.com/isaccunha/coffee-chain" target="_blank" class="project-card">
+          <div class="proj-title"><i class="bi bi-github"></i> coffee-chain</div>
+          <div class="proj-desc">Solução de alunos da UFLA para a rastreabilidade embutida em plantio de café no Brasil</div>
+          <div class="proj-lang">● Python, Typescript and React</div>
+        </a>
+      </div>
+    </div>
+
+    <hr style="border-color: var(--dull-blue-light);">
+
+    <!-- Experiência -->
+    <h6 class="text-muted mb-3">experiência</h6>
+
+    <div class="card border mb-3">
+      <div class="card-header-dull d-flex justify-content-between flex-wrap">
+        <span>MOST Specialist Technologies</span>
+        <span class="badge badge-dull">Set 2025 – presente</span>
+      </div>
+      <div class="card-body p-2">
+        <div class="text-muted small mb-1">Estagiário Full Stack Developer — Remoto, BH</div>
+        <ul class="mb-0 ps-3 small">
+          <li>Desenvolvimento de automações e integrações para otimizar processos, comunicação e envio de informações entre sistemas.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card border mb-3">
+      <div class="card-header-dull d-flex justify-content-between flex-wrap">
+        <span>Inovia</span>
+        <span class="badge badge-dull">Jul 2025 – Set 2025</span>
+      </div>
+      <div class="card-body p-2">
+        <div class="text-muted small mb-1">Estagiário em Ciência de Dados (Bolsista CNPq) — Remoto, Campinas</div>
+        <ul class="mb-0 ps-3 small">
+          <li>Desenvolvimento de soluções em visão computacional para análise de imagens, incluindo estimativa de medidas corporais, anotação de dados e extração automatizada de informações.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card border mb-3">
+      <div class="card-header-dull d-flex justify-content-between flex-wrap">
+        <span>Compass UOL</span>
+        <span class="badge badge-dull">Fev 2025 – Jul 2025</span>
+      </div>
+      <div class="card-body p-2">
+        <div class="text-muted small mb-1">Estagiário em Engenharia de Dados — Remoto</div>
+        <ul class="mb-0 ps-3 small">
+          <li>Atuação em engenharia e análise de dados, envolvendo tratamento e visualização de dados, construção de pipelines e organização de ambientes escaláveis para armazenamento e processamento.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card border mb-4">
+      <div class="card-header-dull d-flex justify-content-between flex-wrap">
+        <span>Emakers Jr.</span>
+        <span class="badge badge-dull">Dez 2024 – Nov 2025</span>
+      </div>
+      <div class="card-body p-2">
+        <div class="text-muted small mb-1">Desenvolvedor Backend (Empresa Júnior) — Lavras, MG</div>
+        <ul class="mb-0 ps-3 small">
+          <li>Desenvolvimento de sistemas backend com APIs para gestão de processos e dados, incluindo controle de acesso e autenticação segura.</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr style="border-color: var(--dull-blue-light);">
+
+    <!-- Habilidades -->
+    <h6 class="text-muted mb-2">habilidades</h6>
+    <div class="mb-1 small text-muted">linguagens</div>
+    <div class="d-flex flex-wrap gap-1 mb-3">
+      <span class="badge badge-dull">Java</span>
+      <span class="badge badge-dull">Python</span>
+      <span class="badge badge-dull">JavaScript</span>
+      <span class="badge badge-dull">HTML/CSS</span>
+      <span class="badge badge-dull">SQL</span>
+      <span class="badge badge-dull">APIs REST</span>
+    </div>
+    <div class="mb-1 small text-muted">tecnologias</div>
+    <div class="d-flex flex-wrap gap-1 mb-4">
+      <span class="badge badge-dull">Linux</span>
+      <span class="badge badge-dull">Git</span>
+      <span class="badge badge-dull">AWS</span>
+      <span class="badge badge-dull">Apache Spark</span>
+      <span class="badge badge-dull">PostgreSQL</span>
+      <span class="badge badge-dull">MongoDB</span>
+      <span class="badge badge-dull">Firestore</span>
+      <span class="badge badge-dull">Docker</span>
+      <span class="badge badge-dull">Pandas</span>
+      <span class="badge badge-dull">Matplotlib</span>
+      <span class="badge badge-dull">Chatwoot</span>
+    </div>
+
+    <hr style="border-color: var(--dull-blue-light);">
+
+    <div class="row g-3 mb-4">
+      <div class="col-sm-6">
+        <h6 class="text-muted mb-2">educação</h6>
+        <div class="small">
+          <strong>Universidade Federal de Lavras</strong><br>
+          <span class="text-muted">Ciência da Computação</span><br>
+          <span class="text-muted">Jan 2023 – Dez 2026</span>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <h6 class="text-muted mb-2">certificações</h6>
+        <div class="small">
+          <strong>AWS Certified Cloud Practitioner</strong><br>
+          <span class="text-muted">Amazon Web Services · Jul 2025</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-muted small text-center mb-3">abril de 2026</div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+</body>
+<script src="script.js"></script>
+</html>
