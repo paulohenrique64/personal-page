@@ -193,7 +193,8 @@
     let W = dims.W, H = dims.H;
     let FL = H - 1;
 
-    const EMOJIS = ['🥴', '😵‍💫', '💀', '🥸', '🥶'];
+    // const EMOJIS = ['🥴', '😵‍💫', '💀', '🥸', '🥶'];
+    const EMOJIS = [];
 
     function isDark() { return HTML.getAttribute('data-theme') === 'dark'; }
     function sc() { return isDark() ? '#c8d8e4' : '#1a2a35'; }
