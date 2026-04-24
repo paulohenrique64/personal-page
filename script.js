@@ -193,7 +193,7 @@
     let W = dims.W, H = dims.H;
     let FL = H - 1;  // feet right on bottom edge
 
-    const EMOJIS = ['🥴', '😵‍💫'];
+    const EMOJIS = ['🥴', '😵‍💫', '💀', '🥸', '🥶'];
 
     function isDark() { return HTML.getAttribute('data-bs-theme') === 'dark'; }
     function sc() { return isDark() ? '#c8d8e4' : '#1a2a35'; }
