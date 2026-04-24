@@ -83,8 +83,8 @@ html, body {
   top: 10px;
   right: 12px;
   z-index: 10;
-  border: 1px solid var(--dull-blue-dark) !important;
-  color: var(--dull-blue-dark) !important;
+  border: 1px solid var(--badge-text) !important;
+  color: var(--badge-text) !important;
   background: transparent !important;
   box-shadow: none !important;
 }
@@ -94,8 +94,8 @@ html, body {
   top: 10px;
   right: 90px;
   z-index: 10;
-  border: 1px solid var(--dull-blue-dark) !important;
-  color: var(--dull-blue-dark) !important;
+  border: 1px solid var(--badge-text);
+  color: var(--badge-text);
   background: transparent !important;
   box-shadow: none !important;
   text-decoration: none;
